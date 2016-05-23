@@ -1,13 +1,46 @@
 'use strict';
-var router = require('express').Router();
-module.exports = router;
-var rp = require('request-promise');
 
-var baseClientUrl = 'https://api.hedgeable.com/client/';
-var token = 'hedgeable-api-demo';
-var userToken = '827856da-807d-42b2-96b5-557ea447a7f4';
-var clientId = '6';
-var baseAccountUrl = 'https://api.hedgeable.com/client/' +  clientId + '/account';
 
+
+app.factory("ClientAccountFactory", function($http) {
+	var ClientAccountFactory = {};
+
+
+
+	//get account information about a client 
+	ClientAccountFactory.getAccountInfo = function(clientId) {
+		return $http.get('/api/client/' + clientId + '/account')
+			.then(function(account) {
+				return account.data.response;
+			})
+	};
+
+	//get an account for the client
+	ClientAccountFactory.getAnAccount = function(accountId) {
+		return $http.get('/api/client/6/account/' + accountId)
+			.then(function(client) {
+				return client.data.response;
+			})
+	};
+
+	//get all performance information about a client 
+	ClientAccountFactory.getAccountHolding = function(accountId) {
+		return $http.get('/api/client/6/' + accountId + '/holdings')
+			.then(function(client) {
+				return client.data.response;
+			})
+	};
+
+	//get all performance information about a client 
+	ClientAccountFactory.getAccountHolding = function(accountId) {
+		return $http.get('/api/client/6/' + accountId + '/performance')
+			.then(function(client) {
+				return client.data.response;
+			})
+	};
+
+
+	return ClientAccountFactory;
+});
 
 

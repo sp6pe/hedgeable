@@ -29,6 +29,7 @@ router.get('/:clientId', function(req, res, next) {
 //Get client holdings 
 router.get('/:clientId/holdings', function(req, res, next) {
 
+
 	rp({uri: baseClientUrl + req.client + '/holdings', qs: { token: token, usertoken: userToken}})
     .then(function (response) {
         res.send(response);
@@ -39,8 +40,10 @@ router.get('/:clientId/holdings', function(req, res, next) {
 
 //Get client performance 
 router.get('/:clientId/performance', function(req, res, next) {
+	var startdate = req.query.startDate;
+	var enddate = req.query.endDate;
 
-	rp({uri: baseClientUrl + req.client + '/performance', qs: { token: token, usertoken: userToken}})
+	rp({uri: baseClientUrl + req.client + '/performance', qs: { token: token, usertoken: userToken,startdate:startdate,enddate:enddate }})
     .then(function (response) {
         res.send(response);
     })
@@ -51,7 +54,7 @@ router.get('/:clientId/performance', function(req, res, next) {
 //Get all client data 
 router.get('/:clientId/all', function(req, res, next) {
 
-	rp({uri: baseClientUrl + req.client + '/getlinformation', qs: { token: token, usertoken: userToken}})
+	rp({uri: baseClientUrl + req.client + '/getallinformation', qs: { token: token, usertoken: userToken}})
     .then(function (response) {
         res.send(response);
     })
@@ -60,3 +63,6 @@ router.get('/:clientId/all', function(req, res, next) {
 });
 
 router.use('/:clientId/account', require('./client-account'));
+
+//firstDate: "2006-02-07",
+//lastDate: "2016-05-22"

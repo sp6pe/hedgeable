@@ -56,15 +56,15 @@ router.get('/:accountId/performance', function(req, res, next) {
 });
 
 
-router.get('/:accountId/transactions', function(req, res, next) {
+// router.get('/:accountId/transactions', function(req, res, next) {
 
-	rp({uri: baseClientUrl + req.client + '/account/' + req.account + '/transactions', qs: { token: token, usertoken: userToken}})
-    .then(function (response) {
-        res.send(response);
-    })
-     .then(null, next);
+// 	rp({uri: baseClientUrl + req.client + '/account/' + req.account + '/transactions', qs: { token: token, usertoken: userToken}})
+//     .then(function (response) {
+//         res.send(response);
+//     })
+//      .then(null, next);
 
-});
+// });
 
 
 

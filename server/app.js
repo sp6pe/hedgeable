@@ -7,7 +7,7 @@ module.exports = app;
 
 //expres set up
 var rootPath = path.join(__dirname, '../');
-var indexPath = path.join(rootPath, './browser/index.html');
+var indexPath = path.join(rootPath, './browser/index.html///');
 var browserPath = path.join(rootPath, './browser');
 var publicPath = path.join(rootPath, './public');
 var npmPath = path.join(rootPath, './node_modules');
@@ -43,8 +43,10 @@ app.use(function (req, res, next) {
 
 //main view of app 
 app.get('/*', function (req, res) {
+
 	console.log(req.sessionID);
     res.sendFile(app.get('indexHTMLPath'));
+
 });
 //app running on port 3000
 app.listen(3000, function () {
