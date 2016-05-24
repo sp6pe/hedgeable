@@ -1,26 +1,18 @@
 app.controller('homeCtrl', function($scope, ClientFactory, ClientAccountFactory) {
 
 
-
-    // ClientFactory.getClientBasicInfo().then(function(client){
-    // 	console.log(client);
-    // 	$scope.clientInfo = client;
-
-    // })
-
-    // ClientFactory.getClientPerformance(6,"2016-01-07","2016-02-07").then(function(client){
-    // 		console.log(client);
-    // 		$scope.clientInfo = client;
-
-    // 	})
-
     ClientFactory.getClientAll(6).then(function(allInfo) {
-
+    
         $scope.hedgedPercentage = formatPercentage(allInfo.hedgedPercentage);
         $scope.latestBalance = formatDollar(allInfo.latestBalance);
-        var stats = formatStats(allInfo.balances.stats)
+
+        var stats = formatStats(allInfo.balances.stats);
         $scope.stats = stats;
     })	
+
+
+
+
 });
 
 function formatDollar(num) {

@@ -1,7 +1,7 @@
  'use strict'
 
 //instantiate angular app 
- var app = angular.module('hedgeable', ['ui.router']);
+ var app = angular.module('hedgeable', ['ui.router', 'nvd3']);
 
  app.config(function ($urlRouterProvider, $locationProvider,$httpProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)

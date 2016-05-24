@@ -18,7 +18,7 @@ app.factory("ClientFactory", function($http) {
 
 	//get all holding information about a client 
 	ClientFactory.getClientHoldings = function(clientId) {
-		return $http.get('/api/client/6/holdings')
+		return $http.get('/api/client/'+6+'/holdings')
 			.then(function(client) {
 				return client.data.response;
 			})
@@ -26,7 +26,7 @@ app.factory("ClientFactory", function($http) {
 
 	//get all performance information about a client 
 	ClientFactory.getClientPerformance = function(clientId, startDate, endDate) {
-		return $http.get('/api/client/6/performance', {params:{"startDate": startDate, "endDate": endDate}})
+		return $http.get('/api/client/'+clientId+'/performance', {params:{"startDate": startDate, "endDate": endDate}})
 			.then(function(client) {
 				return client.data.response;
 			})
